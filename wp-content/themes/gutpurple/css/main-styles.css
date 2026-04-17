@@ -932,10 +932,14 @@ h3.faq-question {
     overflow: hidden;
     transition: max-height 0.3s ease;
     margin: 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: 400;
     font-size: 14px;
 
+}
+
+.faq-list .faq-item:not(:first-child) {
+    padding-top: 15px;
 }
 
 .faq-icon {
