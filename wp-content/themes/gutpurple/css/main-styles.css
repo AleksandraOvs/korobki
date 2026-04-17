@@ -124,10 +124,6 @@ a.button:hover {
     animation: shine 4s ease-in-out infinite;
 }
 
-/* сама пульсация кнопки */
-.header-right a.button {
-    animation: pulse 4s ease-in-out infinite;
-}
 
 /* движение блика */
 @keyframes shine {
@@ -141,25 +137,6 @@ a.button:hover {
 
     100% {
         left: 120%;
-    }
-}
-
-/* лёгкое увеличение синхронно с бликом */
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    10% {
-        transform: scale(1.05);
-    }
-
-    20% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(1);
     }
 }
 
