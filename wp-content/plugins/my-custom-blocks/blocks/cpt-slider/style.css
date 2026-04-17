@@ -1,0 +1,103 @@
+.cpt-slider {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+    /* чтобы не кликался, когда скрыт */
+    position: absolute;
+    width: 100%;
+}
+
+.cpt-slider.active-slider {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    position: relative;
+    height: 320px;
+}
+
+.cpt-slider.hidden-slider {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    position: absolute;
+}
+
+.cpt-slider-categories {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.cpt-slider-categories .category-tab {
+    padding: 10px 20px;
+    background: var(--theme-color-accent);
+    border-radius: 30px;
+    line-height: 1;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 300;
+    font-size: 14px;
+    text-transform: uppercase;
+    transition: all .5s linear;
+}
+
+.cpt-slider-categories .category-tab:hover {
+    background: var(--theme-color-primary);
+}
+
+.cpt-slider-categories .category-tab.active {
+    background: var(--theme-color-primary);
+}
+
+.swiper-slide.cpt-slider__slide {
+    height: 270px;
+}
+
+.swiper-slide.cpt-slider__slide a {
+    display: flex;
+    overflow: hidden;
+    border-radius: 8px;
+    flex-direction: column;
+    height: 100%;
+    gap: 5px;
+    transition: all .5s linear;
+}
+
+.swiper-slide.cpt-slider__slide a:hover h3 {
+    opacity: 0;
+}
+
+.swiper-slide.cpt-slider__slide a:hover img {
+    transform: scale(1.1);
+}
+
+.swiper-slide.cpt-slider__slide a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: all .7s ease-in-out;
+}
+
+.swiper-slide.cpt-slider__slide a h3 {
+    position: absolute;
+    margin: 0;
+    height: 65px;
+    width: 100%;
+    border-radius: 0;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    font-size: 20px;
+    color: var(--theme-color-primary);
+    background: linear-gradient(0deg, rgba(255, 255, 255, .85), rgba(255, 255, 255, .5));
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    transition: all .5s linear;
+    bottom: 0;
+
+
+}
