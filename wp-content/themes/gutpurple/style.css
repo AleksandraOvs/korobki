@@ -615,9 +615,9 @@ textarea {
 /* Navigation
 --------------------------------------------- */
 .site-branding {
-	width: 300px;
+	width: 350px;
 	height: 60px;
-	font-size: 24px;
+	font-size: 18px;
 	display: flex;
 	align-items: center;
 }

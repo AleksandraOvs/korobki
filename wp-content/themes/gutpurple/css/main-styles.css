@@ -101,6 +101,7 @@ a.button:hover {
     overflow: hidden;
     position: relative;
     color: #fff;
+    text-decoration: none;
 }
 
 .wp-block-button__link {
@@ -282,13 +283,17 @@ header.site-header {
     z-index: 200;
 }
 
+header.site-header * {
+    color: #fff;
+}
+
 header.site-header .full-container {
     display: flex;
     gap: 20px;
     padding: 10px 20px;
     align-items: center;
     filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, .2));
-    background: rgba(255, 255, 255, .55);
+    background: #3d7eff6b;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     -moz-backdrop-filter: blur(20px);
