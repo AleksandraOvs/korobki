@@ -2,7 +2,7 @@
 $faq_items = carbon_get_post_meta(get_the_ID(), 'crb_faq');
 
 if (!empty($faq_items)) : ?>
-    <div class="container">
+    <div class="container lower">
         <div class="faq-list">
 
             <?php foreach ($faq_items as $item) :

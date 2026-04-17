@@ -217,6 +217,12 @@ figure.wp-block-image {
     overflow: hidden;
 }
 
+.lower {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 .wp-block-cover.container,
 .wp-block-cover.full-container {
     border-radius: 16px;
