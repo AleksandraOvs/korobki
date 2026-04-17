@@ -218,7 +218,7 @@ function gutpurple_scripts()
 
 	wp_enqueue_script('countdown-script', get_template_directory_uri() . '/js/countdown.js', array(), _S_VERSION, true);
 
-	//wp_enqueue_script('faq-script', get_template_directory_uri() . '/js/faq.js', array(), _S_VERSION, true);
+	wp_enqueue_script('faq-script', get_template_directory_uri() . '/js/faq.js', array(), _S_VERSION, true);
 	//wp_enqueue_script('nums-script', get_template_directory_uri() . '/js/numbers.js', array(), _S_VERSION, true);
 }
 add_action('wp_enqueue_scripts', 'gutpurple_scripts');
