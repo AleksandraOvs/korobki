@@ -71,9 +71,18 @@ function site_carbon()
 
     //поля для сео-текста
 
-    Container::make('post_meta', 'Сео-текст')
+    Container::make('post_meta', 'Текстовый контент страницы')
         ->where('post_type', '=', 'page')
         ->add_fields(array(
+            Field::make('complex', 'crb_faq', 'FAQ')
+                ->add_fields(array(
+                    Field::make('text', 'crb_faq_question', 'Вопрос')
+                        ->set_width(50),
+                    Field::make('rich_text', 'crb_faq_answer', 'Ответ')
+                        ->set_width(50),
+                )),
+
+
             Field::make('rich_text', 'seo_text', 'Текст')
                 ->set_width(50),
 

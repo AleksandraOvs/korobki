@@ -6,6 +6,8 @@ get_header();
 
 	<div id="ajax-content" data-page-id="<?php echo get_the_ID(); ?>"></div>
 
+	<?php get_template_part('template-parts/faq-block') ?>
+
 	<?php
 	$seo_text = carbon_get_post_meta(get_the_ID(), 'seo_text');
 
