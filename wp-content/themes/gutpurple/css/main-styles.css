@@ -293,11 +293,7 @@ header.site-header .full-container {
     padding: 10px 20px;
     align-items: center;
     filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, .2));
-    background: #3d7eff6b;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    -moz-backdrop-filter: blur(20px);
-    -o-backdrop-filter: blur(20px);
+    background: rgba(10, 10, 10, .5);
 }
 
 .main-navigation {
@@ -371,7 +367,7 @@ header.site-header .full-container {
 }
 
 button.menu-toggle .bar {
-    background: var(--wp--preset--color--primary);
+    background: #fff;
     border-radius: 3px;
     width: 35px;
     height: 2px;
@@ -385,9 +381,9 @@ button.menu-toggle .bar {
     transition: transform cubic-bezier(.89, 0, .08, 1) 1.5s, width cubic-bezier(.89, 0, .08, 1) 1.5s, background .3s;
 }
 
-button.menu-toggle.active .bar {
+/* button.menu-toggle.active .bar {
     background: var(--theme-color-accent);
-}
+} */
 
 button.menu-toggle.active .bar:nth-child(1) {
     transform: translate(0, 10px) rotate(135deg);
@@ -1532,7 +1528,7 @@ footer.site-footer {
     position: fixed;
     top: 0;
     right: 0;
-    background: #fff;
+    background: rgba(10, 10, 10, .85);
     height: 100vh;
     min-width: 350px;
     z-index: 150;
@@ -1553,6 +1549,7 @@ footer.site-footer {
 
 #mobile-navigation ul li a {
     font-size: 18px;
+    color: #fff;
     padding-bottom: 5px;
     display: block;
     border-bottom: 1px dotted var(--theme-color-primary);
@@ -1591,7 +1588,9 @@ footer.site-footer {
 @media (max-width: 768px) {
 
     header.site-header .full-container {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
         gap: 7px;
     }
 
@@ -1600,12 +1599,12 @@ footer.site-footer {
         padding: 7px 10px;
     }
 
-    .header-right {
+    /* .header-right {
         width: 100%;
         justify-content: space-between;
-    }
+    } */
 
-    .site-branding {
+    .header-right a.button {
         /* width: 100%;
         height: auto;
         text-align: center;
