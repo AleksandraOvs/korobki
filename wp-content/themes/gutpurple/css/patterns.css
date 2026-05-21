@@ -1,0 +1,218 @@
+#numbers {
+    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+}
+
+.wp-block-column.about-num {
+    text-align: center;
+}
+
+.about-num__value {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1;
+    padding-bottom: .5em;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+}
+
+.about-num__desc {
+    margin-top: .5em;
+}
+
+.adv-grid .wp-block-column {
+    border-bottom: 1px solid #cacaca;
+}
+
+.cta-button a.wp-block-button__link {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+#cta-block {
+    animation: pulse 4s ease-in-out infinite;
+    overflow: hidden;
+}
+
+#cta-block:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transform: skewX(-20deg);
+    animation: shine 6s ease-in-out infinite;
+}
+
+/* движение блика */
+@keyframes shine {
+    0% {
+        left: -80%;
+    }
+
+    20% {
+        left: 120%;
+    }
+
+    100% {
+        left: 120%;
+    }
+}
+
+/* лёгкое увеличение синхронно с бликом */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    10% {
+        transform: scale(1.05);
+    }
+
+    20% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.price-table table tbody tr td {
+    border: none;
+    border-bottom: 1px solid #cacaca;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.count-item {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.count-item span {
+    font-size: 60px;
+    font-weight: 600;
+}
+
+#countdown .count-item:not(:last-child) {
+    padding-right: 40px;
+    border-right: 1px solid #cacaca;
+}
+
+#countdown .count-item:first-child {
+    padding-left: 40px;
+}
+
+/*FEEDBACK SLIDER*/
+
+.slider-feedback__slide {
+    padding: 0 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.slider-feedback__slide figure {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.slider-feedback .sliders-controls .slider__button-prev,
+.slider-feedback .sliders-controls .slider__button-next {
+    position: absolute;
+    top: calc(50% - 2px);
+}
+
+@media (max-width: 992px) {
+    #numbers {
+        flex-wrap: wrap;
+        display: grid;
+        gap: 3em;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    #numbers {
+        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .wp-block-column.about-num {
+        padding: 0 50px;
+    }
+
+    /* div#countdown {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #countdown .count-item:first-child {
+        padding-left: 0;
+    }
+
+    #countdown .count-item:not(:last-child) {
+        padding-right: 0;
+    }
+
+    #countdown .count-item:not(:last-child) {
+        border-right: none;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #cacaca;
+    }
+
+    .count-item {
+        width: max-content;
+        margin: 0 auto;
+    } */
+
+    .count-item span {
+        font-size: 30px;
+    }
+
+    #countdown .count-item:first-child {
+        padding-left: 0;
+    }
+
+    #countdown .count-item:not(:last-child) {
+        padding-right: 0;
+        border-right: none;
+    }
+
+    #countdown .count-item {
+        border-bottom: 1px solid #cacaca;
+        padding-bottom: 20px;
+    }
+
+    .slider-feedback__slide {
+        padding: 0;
+    }
+
+    .slider-feedback .sliders-controls .slider__button-prev,
+    .slider-feedback .sliders-controls .slider__button-next {
+        top: unset;
+        bottom: 0;
+    }
+
+
+
+
+}
