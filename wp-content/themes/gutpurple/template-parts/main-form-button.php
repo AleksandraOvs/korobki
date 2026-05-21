@@ -5,7 +5,7 @@ $main_form_button_link = carbon_get_theme_option('crb_button_link');
 
 if (!empty($main_form_button_link)) {
 ?>
-    <a href="javascript:;" data-fancybox data-src="#main-form" class="button">
+    <a href="<?php echo $main_form_button_link ?>" class="button">
         <?php
         if (!empty($main_form_button_text)) {
             echo '<span>' . $main_form_button_text . '</span>';

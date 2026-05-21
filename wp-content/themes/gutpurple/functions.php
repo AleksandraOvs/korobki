@@ -183,7 +183,7 @@ function gutpurple_scripts()
 	wp_style_add_data('gutpurple-style', 'rtl', 'replace');
 	wp_enqueue_style('swiper_styles', get_stylesheet_directory_uri() . '/css/swiper-bundle.min.css', array(), time());
 	wp_enqueue_style('patterns-styles', get_stylesheet_directory_uri() . '/css/patterns.css');
-	wp_enqueue_style('templates-styles', get_stylesheet_directory_uri() . '/css/templates-styles.css');
+	//wp_enqueue_style('templates-styles', get_stylesheet_directory_uri() . '/css/templates-styles.css');
 
 	wp_enqueue_script('gutpurple-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 

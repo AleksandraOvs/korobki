@@ -11,7 +11,7 @@ add_action('wp_enqueue_scripts', function () {
     );
 
     wp_localize_script('ajax-page', 'myAjax', [
-        'url' => admin_url('admin-ajax.php')
+        'url' => '/wp-admin/admin-ajax.php'
     ]);
 });
 
@@ -28,22 +28,27 @@ function load_page_content()
         wp_send_json_error('Нет ID страницы');
     }
 
-    $post = get_post($page_id);
+    // 🔥 берём template_page из Carbon Fields
+    $template = carbon_get_post_meta($page_id, 'template_page');
 
-    if (!$post) {
-        wp_send_json_error('Страница не найдена');
+    if (empty($template)) {
+        wp_send_json_error('Шаблон не назначен');
     }
 
-    // 🔥 КРИТИЧНО: делаем WP "как на обычной странице"
-    global $post;
-    $post = get_post($page_id);
+    $template_id = $template[0]['id'];
+
+    $post = get_post($template_id);
+
+    if (!$post) {
+        wp_send_json_error('Шаблон не найден');
+    }
+
     setup_postdata($post);
 
     ob_start();
 
     echo '<div class="page-content" id="content">';
 
-    // 🔥 ВАЖНО: WP сам рендерит блоки как на фронте
     echo apply_filters('the_content', $post->post_content);
 
     echo '</div>';
