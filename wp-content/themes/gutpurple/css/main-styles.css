@@ -228,9 +228,9 @@ figure.wp-block-image {
     border-radius: 16px;
 }
 
-/* #primary {
-    padding-top: 20px;
-} */
+#primary {
+    min-height: 90vh;
+}
 
 /* 
 

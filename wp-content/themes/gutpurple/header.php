@@ -21,7 +21,7 @@
 
 	<?php wp_head(); ?>
 
-	<!-- Marquiz script start -->
+	<!-- nominify begin --><!-- Marquiz script start -->
 	<script>
 		(function(w, d, s, o) {
 			var j = d.createElement(s);
@@ -37,14 +37,13 @@
 		})(window, document, 'script', {
 			host: '//quiz.marquiz.ru',
 			region: 'ru',
-			id: '68d95b23f9921f00197af679',
-			autoOpen: false,
-			autoOpenFreq: 'once',
-			openOnExit: false,
+			id: '68da59f4d25bd600191644f9',
+			autoOpen: 40,
+			autoOpenFreq: 'always',
+			openOnExit: true,
 			disableOnMobile: false
 		});
-	</script>
-	<!-- Marquiz script end -->
+	</script> <!-- Marquiz script end --><!-- nominify end -->
 
 </head>
 

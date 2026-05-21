@@ -75,7 +75,7 @@
 	<?php
 	}
 	?>
-	
+
 	<?php get_template_part('template-parts/toggle-contacts'); ?>
 
 
@@ -91,6 +91,23 @@
 	</svg>
 
 </div>
+<!-- nominify begin -->
+<script>
+	(function(t, p) {
+		window.Marquiz ? Marquiz.add([t, p]) : document.addEventListener('marquizLoaded', function() {
+			Marquiz.add([t, p])
+		})
+	})('Widget', {
+		id: '68d95b23f9921f00197af679',
+		position: 'left',
+		delay: 10,
+		autoOpen: 15,
+		disableOnMobile: false,
+		disableIfClosed: false,
+		hiddenArrowOnMobile: false
+	})
+</script> <!-- nominify end -->
+
 <?php wp_footer(); ?>
 
 <div class="mobile-menu">

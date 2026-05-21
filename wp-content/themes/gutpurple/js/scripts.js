@@ -1,3 +1,25 @@
+// ================= INIT MANAGER =================
+const App = {
+    inits: [],
+
+    register(fn) {
+        this.inits.push(fn);
+    },
+
+    run(context = document) {
+        this.inits.forEach(fn => {
+            try {
+                fn(context);
+            } catch (e) {
+                console.error('Init error:', e);
+            }
+        });
+    }
+};
+
+window.App = App;
+
+
 // ================= RELOAD STYLES =================
 function reloadGutenbergStyles() {
     const styles = [
@@ -15,19 +37,6 @@ function reloadGutenbergStyles() {
     });
 }
 
-// ================= INIT =================
-function initFrontend() {
-
-    initFancybox();
-    initSmoothScroll();
-    initArrowUp();
-    initMenu();
-    initDropdowns();
-    initNumbers();
-    initSwiper();
-    initFaq();
-
-}
 
 // ================= FANCYBOX =================
 function initFancybox() {
@@ -37,6 +46,7 @@ function initFancybox() {
         });
     }
 }
+
 
 // ================= SMOOTH SCROLL =================
 function smoothScrollToElement(selector, duration = 700) {
@@ -115,9 +125,10 @@ function initSmoothScroll() {
 
 }
 
+
 // ================= ARROW UP =================
-function initArrowUp() {
-    const upArrow = document.querySelector('.arrow-up');
+function initArrowUp(context = document) {
+    const upArrow = context.querySelector('.arrow-up');
     if (!upArrow) return;
 
     if (upArrow.dataset.init) return;
@@ -137,9 +148,12 @@ function initArrowUp() {
     });
 }
 
+
 // ================= MENU =================
 function initMenu() {
+
     if (window.menuInit) return;
+    window.menuInit = true;
 
     const body = document.body;
     const menu = document.querySelector('.mobile-menu');
@@ -169,16 +183,15 @@ function initMenu() {
             body.classList.remove('_fixed');
         }
     });
-
-    window.menuInit = true;
 }
 
-// ================= DROPDOWNS =================
-function initDropdowns() {
-    const body = document.body;
-    const menuItems = document.querySelectorAll('.menu-item-has-children');
 
-    menuItems.forEach(item => {
+// ================= DROPDOWNS =================
+function initDropdowns(context = document) {
+
+    const items = context.querySelectorAll('.menu-item-has-children');
+
+    items.forEach(item => {
 
         if (item.dataset.init) return;
         item.dataset.init = "true";
@@ -194,32 +207,16 @@ function initDropdowns() {
             if (!isOpen) {
                 e.preventDefault();
 
-                document.querySelectorAll('.dropdown-menu.show').forEach(openDropdown => {
-                    openDropdown.classList.remove('show');
-                });
+                document.querySelectorAll('.dropdown-menu.show')
+                    .forEach(d => d.classList.remove('show'));
 
                 dropdown.classList.add('show');
-                body.classList.add('fixed');
-            }
-        });
-
-        document.addEventListener('click', (event) => {
-            if (!item.contains(event.target)) {
-                dropdown.classList.remove('show');
-                if (!document.querySelector('.dropdown-menu.show')) {
-                    body.classList.remove('fixed');
-                }
-            }
-        });
-
-        dropdown.addEventListener('mouseleave', () => {
-            dropdown.classList.remove('show');
-            if (!document.querySelector('.dropdown-menu.show')) {
-                body.classList.remove('fixed');
+                document.body.classList.add('fixed');
             }
         });
     });
 }
+
 
 // ================= NUMBERS =================
 function animateNumbers(elements, duration = 1500) {
@@ -243,97 +240,118 @@ function animateNumbers(elements, duration = 1500) {
     });
 }
 
-function initNumbers() {
+function initNumbers(context = document) {
 
-    const numbersBlock = document.querySelector('#numbers');
-    if (!numbersBlock) return;
+    const blocks = context.querySelectorAll('#numbers');
 
-    if (numbersBlock.dataset.init) return;
-    numbersBlock.dataset.init = "true";
+    blocks.forEach(block => {
 
-    const animEls = numbersBlock.querySelectorAll('.js-anim-numbers');
-    if (!animEls.length) return;
+        if (block.dataset.init) return;
+        block.dataset.init = "true";
 
-    let isAnim = false;
+        const animEls = block.querySelectorAll('.js-anim-numbers');
+        if (!animEls.length) return;
 
-    function scrollTracking() {
-        if (isAnim) return;
+        let isAnim = false;
 
-        const rect = numbersBlock.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
+        function scrollTracking() {
+            if (isAnim) return;
 
-        if (rect.top <= windowHeight && rect.bottom >= 0) {
-            isAnim = true;
+            const rect = block.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
 
-            animEls.forEach(el => el.classList.add('_show'));
+            if (rect.top <= windowHeight && rect.bottom >= 0) {
+                isAnim = true;
 
-            setTimeout(() => animateNumbers(animEls), 800);
+                animEls.forEach(el => el.classList.add('_show'));
+                setTimeout(() => animateNumbers(animEls), 800);
 
-            window.removeEventListener('scroll', scrollTracking);
+                window.removeEventListener('scroll', scrollTracking);
+            }
         }
-    }
 
-    window.addEventListener('scroll', scrollTracking);
-    scrollTracking();
-}
-
-// ================= SWIPER =================
-function initSwiper() {
-    const slider = document.querySelector('.slider-feedback');
-    if (!slider) return;
-
-    if (window.feedbackSwiper) {
-        window.feedbackSwiper.destroy(true, true);
-    }
-
-    window.feedbackSwiper = new Swiper(".slider-feedback", {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        navigation: {
-            nextEl: ".slider__button-next",
-            prevEl: ".slider__button-prev",
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
+        window.addEventListener('scroll', scrollTracking);
+        scrollTracking();
     });
 }
 
-// ================= FAQ =================
-function initFaq() {
-    const faqButtons = document.querySelectorAll(".faq-question");
 
-    faqButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            // родительский элемент faq-item
-            const parent = btn.closest(".faq-item");
+// ================= SWIPER =================
+function initSwiper(context = document) {
 
-            // ответ внутри faq-item
-            const answer = parent.querySelector(".faq-answer");
+    const sliders = context.querySelectorAll('.slider-feedback');
 
-            // если у тебя есть иконка внутри вопроса
-            const icon = btn.querySelector(".faq-icon");
+    sliders.forEach(slider => {
 
-            // переключаем класс active
-            parent.classList.toggle("active");
-            if (icon) icon.classList.toggle("active");
+        if (slider.dataset.init) return;
+        slider.dataset.init = "true";
 
-            // плавное раскрытие/сворачивание
-            if (parent.classList.contains("active")) {
-                answer.style.maxHeight = answer.scrollHeight + "px";
-            } else {
-                answer.style.maxHeight = null;
-            }
+        new Swiper(slider, {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: slider.querySelector(".slider__button-next"),
+                prevEl: slider.querySelector(".slider__button-prev"),
+            },
+            pagination: {
+                el: slider.querySelector(".swiper-pagination"),
+                clickable: true,
+            },
         });
     });
 }
 
-// ================= START =================
-document.addEventListener('DOMContentLoaded', initFrontend);
 
-// важно для AJAX
-window.initFrontend = initFrontend;
+// ================= FAQ =================
+function initFaq() {
+
+    if (window.faqInit) return;
+    window.faqInit = true;
+
+    document.addEventListener("click", function (e) {
+
+        const btn = e.target.closest(".faq-question");
+        if (!btn) return;
+
+        const parent = btn.closest(".faq-item");
+        const answer = parent.querySelector(".faq-answer");
+        const icon = btn.querySelector(".faq-icon");
+
+        parent.classList.toggle("active");
+        if (icon) icon.classList.toggle("active");
+
+        if (parent.classList.contains("active")) {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+        } else {
+            answer.style.maxHeight = null;
+        }
+    });
+}
+
+
+// ================= REGISTER =================
+App.register(initFancybox);
+App.register(initSmoothScroll);
+App.register(initArrowUp);
+App.register(initMenu);
+App.register(initDropdowns);
+App.register(initNumbers);
+App.register(initSwiper);
+App.register(initFaq);
+
+
+// ================= START =================
+document.addEventListener('DOMContentLoaded', () => {
+    App.run(document);
+});
+
+
+// ================= AJAX INIT =================
+window.initFrontend = (container = document) => {
+    reloadGutenbergStyles();
+    App.run(container);
+};
+
 
 // ================= DEBUG =================
 window.debugStyles = function () {
