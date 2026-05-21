@@ -183,7 +183,8 @@ function gutpurple_scripts()
 	wp_style_add_data('gutpurple-style', 'rtl', 'replace');
 	wp_enqueue_style('swiper_styles', get_stylesheet_directory_uri() . '/css/swiper-bundle.min.css', array(), time());
 	wp_enqueue_style('patterns-styles', get_stylesheet_directory_uri() . '/css/patterns.css');
-	//wp_enqueue_style('templates-styles', get_stylesheet_directory_uri() . '/css/templates-styles.css');
+	wp_enqueue_style('templates-styles', get_stylesheet_directory_uri() . '/css/templates-styles.css');
+	wp_enqueue_style('toggle-contacts-styles', get_stylesheet_directory_uri() . '/css/toggle-contacts.css');
 
 	wp_enqueue_script('gutpurple-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 
@@ -194,7 +195,8 @@ function gutpurple_scripts()
 	wp_enqueue_script('themescript', get_template_directory_uri() . '/js/scripts.js', array(), _S_VERSION, true);
 	wp_enqueue_script('swiper_scripts', get_template_directory_uri() . '/js/swiper-bundle.min.js', array(), _S_VERSION, true);
 	wp_enqueue_script('tours_slider_scripts', get_template_directory_uri() . '/js/slider-scripts.js', array(), _S_VERSION, true);
-
+	wp_enqueue_script('toggle-blocks-script', get_template_directory_uri() . '/js/toggle-blocks.js', array(), _S_VERSION, true);
+	wp_enqueue_script('toggle-contacts-script', get_template_directory_uri() . '/js/toggle-contacts.js', array(), _S_VERSION, true);
 	// Стили
 	wp_enqueue_style(
 		'fancybox',
